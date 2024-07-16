@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import { useI18n } from '~/core/locales/client';
+import AudioPlayer from '~/component/AudioPlayer';
 
 export default function Home() {
   const t = useI18n();
@@ -48,6 +49,13 @@ export default function Home() {
               priority
             />
           </a>
+        </div>
+        <div className={'flex h-10 w-96 bg-red-400 p-2'}>
+          <AudioPlayer
+            source={
+              'https://p.scdn.co/mp3-preview/aed294e8d398129b19f7fa81b8148aaa63ea29da?cid=b644138492164b009229f271bdc7b751'
+            }
+          />
         </div>
       </div>
     </main>
