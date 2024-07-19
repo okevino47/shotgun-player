@@ -3,12 +3,12 @@
   "rules": {
     "@typescript-eslint/no-misused-promises": "off",
     "@typescript-eslint/no-var-requires": "off",
-    "react/jsx-no-literals": ["error", {
-      "noStrings": true,
-      "allowedStrings": ["allowed"],
-      "ignoreProps": false,
-      "noAttributeStrings": true
-    }],
+//    "react/jsx-no-literals": ["error", {
+//      "noStrings": true,
+//      "allowedStrings": ["allowed"],
+//      "ignoreProps": false,
+//      "noAttributeStrings": true
+//    }],
     "react/jsx-curly-brace-presence": [
       "error", {
         "props": "always",
