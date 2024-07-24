@@ -5,7 +5,7 @@ import NavigationList from '~/components/NavigationElements/components/SidePanel
 import PanelHeader from '~/components/NavigationElements/components/SidePanel/components/PanelHeader';
 import {
   navigation,
-  teams,
+  playlistList,
 } from '~/components/NavigationElements/components/SidePanel/constants';
 
 const SidePanel = () => {
@@ -27,7 +27,7 @@ const SidePanel = () => {
               <NavigationList navigation={navigation} />
             </li>
             <li>
-              <PlaylistList title={'Your playlist'} list={teams} />
+              <PlaylistList title={'Your playlist'} list={playlistList} />
             </li>
             <li className={'mt-auto'}>
               <a

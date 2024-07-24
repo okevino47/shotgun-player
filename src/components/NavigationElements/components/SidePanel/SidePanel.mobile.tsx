@@ -12,7 +12,7 @@ import PlaylistList from '~/components/NavigationElements/components/SidePanel/c
 import PanelHeader from '~/components/NavigationElements/components/SidePanel/components/PanelHeader';
 import {
   navigation,
-  teams,
+  playlistList,
 } from '~/components/NavigationElements/components/SidePanel/constants';
 
 interface SidePanelProps {
@@ -66,7 +66,7 @@ const SidePanel = ({ sidePanelOpen, setSidePanelOpen }: SidePanelProps) => {
               <ul role={'list'} className={'flex flex-1 flex-col gap-y-7'}>
                 <NavigationList navigation={navigation} />
                 <li>
-                  <PlaylistList title={'Your playlist'} list={teams} />
+                  <PlaylistList title={'Your playlist'} list={playlistList} />
                 </li>
                 <li className={'mt-auto'}>
                   <a
