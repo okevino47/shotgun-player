@@ -10,7 +10,7 @@ interface TopBarProps {
 
 const TopBar = ({ setSidePanelOpen, children }: TopBarProps) => {
   return (
-    <div className={'lg:pl-72'}>
+    <div className={'h-full lg:pl-72'}>
       <div className={'sticky lg:hidden'}>
         <div
           className={
@@ -24,7 +24,7 @@ const TopBar = ({ setSidePanelOpen, children }: TopBarProps) => {
           />
         </div>
       </div>
-      <div>{children}</div>
+      {children}
     </div>
   );
 };

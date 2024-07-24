@@ -10,17 +10,18 @@ interface NavigationElementsProps {
 
 const NavigationElements = ({ children }: NavigationElementsProps) => {
   const [sidePanelOpen, setSidePanelOpen] = useState(false);
+
   return (
-    <>
+    <div className={'h-screen'}>
       <SidePanel
         setSidePanelOpen={setSidePanelOpen}
         sidePanelOpen={sidePanelOpen}
       />
 
       <TopBar setSidePanelOpen={setSidePanelOpen} sidePanelOpen={sidePanelOpen}>
-        {children}
+        <div className={'h-full'}>{children}</div>
       </TopBar>
-    </>
+    </div>
   );
 };
 

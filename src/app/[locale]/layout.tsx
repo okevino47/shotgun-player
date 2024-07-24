@@ -2,8 +2,9 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
 import { I18nProviderClient } from '~/core/locales/client';
-import { ReactElement } from 'react';
+import React, { ReactElement } from 'react';
 import NavigationElements from '~/components/NavigationElements';
+import AudioPlayer from '~/components/AudioPlayer';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -19,11 +20,29 @@ export default function RootLayout({
   params: { locale: string };
   children: ReactElement;
 }) {
+  const music =
+    'https://p.scdn.co/mp3-preview/aed294e8d398129b19f7fa81b8148aaa63ea29da?cid=b644138492164b009229f271bdc7b751';
+
   return (
-    <html lang={'en'} className={'h-full bg-white'}>
-      <body className={`h-full ${inter.className}`}>
+    <html lang={'en'} className={'h-screen bg-white'}>
+      <body className={`h-screen ${inter.className}`}>
         <I18nProviderClient locale={locale}>
-          <NavigationElements>{children}</NavigationElements>
+          <NavigationElements>
+            <div className={'flex h-full flex-col justify-between'}>
+              {children}
+              {music ? (
+                <div className={'bg-gray-900'}>
+                  <div
+                    className={
+                      'my-3 flex h-12 w-full items-center justify-center'
+                    }
+                  >
+                    <AudioPlayer source={music} />
+                  </div>
+                </div>
+              ) : null}
+            </div>
+          </NavigationElements>
         </I18nProviderClient>
       </body>
     </html>
