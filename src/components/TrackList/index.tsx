@@ -1,6 +1,6 @@
 import React from 'react';
 import { Track } from '~/utils/serverActions/fetchTracks';
-import TrackListItem from '~/component/TrackList/components/TrackListItem';
+import TrackListItem from '~/components/TrackList/components/TrackListItem';
 
 interface TrackListProps {
   trackList: Track[];
