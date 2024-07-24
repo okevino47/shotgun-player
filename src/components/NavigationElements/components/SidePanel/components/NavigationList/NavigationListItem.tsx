@@ -3,6 +3,7 @@ import { conditionalClassnames } from '~/utils/function/conditionalClassnames';
 
 import { navigationItem } from '~/components/NavigationElements/components/SidePanel/constants';
 import { usePathname } from 'next/navigation';
+import Link from 'next/link';
 
 interface SidePanelLinkProps {
   item: navigationItem;
@@ -13,7 +14,7 @@ const NavigationListItem = ({ item }: SidePanelLinkProps) => {
   const isCurrent = pathname.includes(item.name);
 
   return (
-    <a
+    <Link
       href={item.href}
       className={conditionalClassnames(
         isCurrent
@@ -24,7 +25,7 @@ const NavigationListItem = ({ item }: SidePanelLinkProps) => {
     >
       <item.icon aria-hidden={'true'} className={'size-6 shrink-0'} />
       {item.name}
-    </a>
+    </Link>
   );
 };
 

@@ -2,6 +2,7 @@ import React from 'react';
 import { conditionalClassnames } from '~/utils/function/conditionalClassnames';
 import { playlist } from '~/components/NavigationElements/components/SidePanel/constants';
 import { usePathname } from 'next/navigation';
+import Link from 'next/link';
 
 interface SidePanelPlaylistLinkProps {
   playlist: playlist;
@@ -12,7 +13,7 @@ const PlaylistListItem = ({ playlist }: SidePanelPlaylistLinkProps) => {
   const isCurrent = pathname.includes(playlist.name);
 
   return (
-    <a
+    <Link
       href={playlist.href}
       className={conditionalClassnames(
         isCurrent
@@ -29,7 +30,7 @@ const PlaylistListItem = ({ playlist }: SidePanelPlaylistLinkProps) => {
         {playlist.name.slice(0, 1).toUpperCase()}
       </span>
       <span className={'truncate'}>{playlist.name}</span>
-    </a>
+    </Link>
   );
 };
 
