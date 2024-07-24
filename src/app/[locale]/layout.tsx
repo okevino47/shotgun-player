@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google';
 import './globals.css';
 import { I18nProviderClient } from '~/core/locales/client';
 import { ReactElement } from 'react';
+import NavigationElements from '~/components/NavigationElements';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -19,9 +20,11 @@ export default function RootLayout({
   children: ReactElement;
 }) {
   return (
-    <html lang={'en'}>
-      <body className={inter.className}>
-        <I18nProviderClient locale={locale}>{children}</I18nProviderClient>
+    <html lang={'en'} className={'h-full bg-white'}>
+      <body className={`h-full ${inter.className}`}>
+        <I18nProviderClient locale={locale}>
+          <NavigationElements>{children}</NavigationElements>
+        </I18nProviderClient>
       </body>
     </html>
   );
