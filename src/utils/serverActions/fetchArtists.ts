@@ -1,8 +1,15 @@
+'use server';
+
 import { sql } from '@vercel/postgres';
 
-const fetchArtists = async () => {
+export type Artist = {
+  id: number;
+  name: string;
+};
+
+export const fetchArtists = async (): Promise<Artist[]> => {
   try {
-    const data = await sql`
+    const data = await sql<Artist>`
         SELECT id, name FROM artists
     `;
 
