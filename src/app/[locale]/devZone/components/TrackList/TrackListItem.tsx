@@ -1,13 +1,23 @@
+'use client';
+
 import React from 'react';
 import { Track } from '~/utils/serverActions/fetchTracks';
+import { usePlayingAudio } from '~/components/AudioPlayer/utils/PlayingAudioContext';
 
 interface TrackListItemProps {
   track: Track;
 }
 
 const TrackListItem = ({ track }: TrackListItemProps) => {
+  const { setCurrentTrack } = usePlayingAudio();
+
+  const handleClick = () => {
+    setCurrentTrack(track);
+  };
+
   return (
     <button
+      onClick={handleClick}
       className={
         'flex w-40 flex-col justify-center rounded-2xl bg-gray-200 p-3'
       }

@@ -5,6 +5,7 @@ import { I18nProviderClient } from '~/core/locales/client';
 import React, { ReactElement } from 'react';
 import NavigationElements from '~/components/NavigationElements';
 import AudioPlayer from '~/components/AudioPlayer';
+import { PlayingAudioProvider } from '~/components/AudioPlayer/utils/PlayingAudioContext';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -20,28 +21,17 @@ export default function RootLayout({
   params: { locale: string };
   children: ReactElement;
 }) {
-  const music =
-    'https://p.scdn.co/mp3-preview/aed294e8d398129b19f7fa81b8148aaa63ea29da?cid=b644138492164b009229f271bdc7b751';
-
   return (
     <html lang={'en'} className={'h-screen bg-white'}>
       <body className={`h-screen ${inter.className}`}>
         <I18nProviderClient locale={locale}>
           <NavigationElements>
-            <div className={'flex h-full flex-col justify-between'}>
-              {children}
-              {music ? (
-                <div className={'bg-gray-900'}>
-                  <div
-                    className={
-                      'my-3 flex h-12 w-full items-center justify-center'
-                    }
-                  >
-                    <AudioPlayer source={music} />
-                  </div>
-                </div>
-              ) : null}
-            </div>
+            <PlayingAudioProvider>
+              <div className={'flex h-full flex-col justify-between'}>
+                {children}
+                <AudioPlayer />
+              </div>
+            </PlayingAudioProvider>
           </NavigationElements>
         </I18nProviderClient>
       </body>
