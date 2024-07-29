@@ -9,7 +9,7 @@ interface ArtistListItemProps {
 
 const ArtistListItem = ({ artist, index }: ArtistListItemProps) => {
   return (
-    <Link href={`/devZone/artist/${artist.id}`}>
+    <Link href={`/artist/${artist.id}`}>
       <div className={'flex rounded-2xl border-2 border-gray-400 px-4 py-2'}>
         <div
           className={`mr-2 flex size-12 items-center justify-center rounded-full ${index % 2 === 0 ? 'bg-purple-600' : 'bg-amber-300'}`}
