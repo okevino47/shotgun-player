@@ -6,6 +6,8 @@ import React, { ReactElement } from 'react';
 import NavigationElements from '~/components/NavigationElements';
 import AudioPlayer from '~/components/AudioPlayer';
 import { PlayingAudioProvider } from '~/components/AudioPlayer/utils/PlayingAudioContext';
+import { ModalProvider } from '~/components/Modal/utils/ModalContext';
+import Modal from '~/components/Modal';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -25,14 +27,17 @@ export default function RootLayout({
     <html lang={'en'} className={'h-screen bg-white'}>
       <body className={`h-screen ${inter.className}`}>
         <I18nProviderClient locale={locale}>
-          <NavigationElements>
-            <PlayingAudioProvider>
-              <div className={'flex h-full flex-col justify-between'}>
-                {children}
-                <AudioPlayer />
-              </div>
-            </PlayingAudioProvider>
-          </NavigationElements>
+          <ModalProvider>
+            <NavigationElements>
+              <PlayingAudioProvider>
+                <div className={'flex h-full flex-col justify-between'}>
+                  {children}
+                  <AudioPlayer />
+                  <Modal />
+                </div>
+              </PlayingAudioProvider>
+            </NavigationElements>
+          </ModalProvider>
         </I18nProviderClient>
       </body>
     </html>

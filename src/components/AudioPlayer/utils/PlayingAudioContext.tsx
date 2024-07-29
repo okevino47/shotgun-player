@@ -2,17 +2,25 @@
 
 import React, {
   createContext,
+  Dispatch,
   ReactElement,
+  SetStateAction,
   useContext,
   useState,
 } from 'react';
 import { Track } from '~/utils/serverActions/fetchTracks';
 
+type Playlist = {
+  title: string;
+  tracks: Track[];
+  id: string;
+};
+
 type PlayingAudioContextType = {
   currentTrack: Track | null;
-  setCurrentTrack: (track: Track) => void;
-  currentPlaylist: Track[] | null;
-  setCurrentPlaylist: (playlist: Track[]) => void;
+  setCurrentTrack: Dispatch<SetStateAction<Track | null>>;
+  currentPlaylist: Playlist | null;
+  setCurrentPlaylist: Dispatch<SetStateAction<Playlist | null>>;
 };
 
 const PlayingAudioContext = createContext<PlayingAudioContextType>({
@@ -28,7 +36,7 @@ export const PlayingAudioProvider = ({
   children: ReactElement;
 }) => {
   const [currentTrack, setCurrentTrack] = useState<Track | null>(null);
-  const [currentPlaylist, setCurrentPlaylist] = useState<Track[] | null>(null);
+  const [currentPlaylist, setCurrentPlaylist] = useState<Playlist | null>(null);
 
   return (
     <PlayingAudioContext.Provider
