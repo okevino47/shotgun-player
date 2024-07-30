@@ -24,7 +24,7 @@ export default function RootLayout({
   children: ReactElement;
 }) {
   return (
-    <html lang={'en'} className={'h-screen bg-white'}>
+    <html lang={'fr'} className={'h-screen bg-white'}>
       <body className={`h-screen ${inter.className}`}>
         <I18nProviderClient locale={locale}>
           <ModalProvider>

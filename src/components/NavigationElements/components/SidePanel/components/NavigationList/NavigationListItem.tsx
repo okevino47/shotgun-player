@@ -1,9 +1,9 @@
 import React from 'react';
 import { conditionalClassnames } from '~/utils/function/conditionalClassnames';
 
-import { navigationItem } from '~/components/NavigationElements/components/SidePanel/constants';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
+import { navigationItem } from '~/components/NavigationElements/components/SidePanel';
 
 interface SidePanelLinkProps {
   item: navigationItem;

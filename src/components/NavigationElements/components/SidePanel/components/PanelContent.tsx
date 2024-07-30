@@ -1,14 +1,17 @@
 import React from 'react';
 import PanelHeader from '~/components/NavigationElements/components/SidePanel/components/PanelHeader';
 import NavigationList from '~/components/NavigationElements/components/SidePanel/components/NavigationList';
-import {
-  navigation,
-  playlistList,
-} from '~/components/NavigationElements/components/SidePanel/constants';
+import { navigationItem } from '~/components/NavigationElements/components/SidePanel';
 import PlaylistList from '~/components/NavigationElements/components/SidePanel/components/PlaylistList';
-import { Cog6ToothIcon } from '@heroicons/react/24/outline';
+import { useScopedI18n } from '~/core/locales/client';
 
-const PanelContent = () => {
+interface PanelContentProps {
+  navigation: navigationItem[];
+}
+
+const PanelContent = ({ navigation }: PanelContentProps) => {
+  const scopedNavigationElement = useScopedI18n('navigationElements');
+
   return (
     <div
       className={

@@ -8,13 +8,19 @@ import {
 import { XMarkIcon } from '@heroicons/react/24/outline';
 import IconButton from '~/components/IconButton';
 import PanelContent from '~/components/NavigationElements/components/SidePanel/components/PanelContent';
+import { navigationItem } from '~/components/NavigationElements/components/SidePanel/index';
 
 interface SidePanelProps {
   sidePanelOpen: boolean;
   setSidePanelOpen: Dispatch<SetStateAction<boolean>>;
+  navigation: navigationItem[];
 }
 
-const SidePanel = ({ sidePanelOpen, setSidePanelOpen }: SidePanelProps) => {
+const SidePanel = ({
+  sidePanelOpen,
+  setSidePanelOpen,
+  navigation,
+}: SidePanelProps) => {
   return (
     <Dialog
       open={sidePanelOpen}

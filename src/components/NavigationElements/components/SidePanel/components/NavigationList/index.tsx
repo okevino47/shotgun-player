@@ -1,6 +1,6 @@
 import React from 'react';
 import NavigationListItem from '~/components/NavigationElements/components/SidePanel/components/NavigationList/NavigationListItem';
-import { navigationItem } from '~/components/NavigationElements/components/SidePanel/constants';
+import { navigationItem } from '~/components/NavigationElements/components/SidePanel';
 
 const NavigationList = ({ navigation }: { navigation: navigationItem[] }) => {
   return (
