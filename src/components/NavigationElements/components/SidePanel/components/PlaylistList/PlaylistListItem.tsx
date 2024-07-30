@@ -1,20 +1,23 @@
 import React from 'react';
 import { conditionalClassnames } from '~/utils/function/conditionalClassnames';
-import { playlist } from '~/components/NavigationElements/components/SidePanel/constants';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
+import { Track } from '~/utils/serverActions/fetchTracks';
+import { HeartIcon } from '@heroicons/react/24/outline';
 
 interface SidePanelPlaylistLinkProps {
-  playlist: playlist;
+  title: string;
+  tracks: Track[];
+  id: string;
 }
 
-const PlaylistListItem = ({ playlist }: SidePanelPlaylistLinkProps) => {
+const PlaylistListItem = ({ title, id }: SidePanelPlaylistLinkProps) => {
   const pathname = usePathname();
-  const isCurrent = pathname.includes(playlist.name);
+  const isCurrent = pathname.includes(title) || pathname.includes(id);
 
   return (
     <Link
-      href={playlist.href}
+      href={`/playlist/${id}`}
       className={conditionalClassnames(
         isCurrent
           ? 'bg-gray-800 text-white'
