@@ -17,11 +17,9 @@ export type playlist = {
 };
 
 export const navigation: navigationItem[] = [
-  { name: 'Accueil', href: '#', icon: HomeIcon },
-  { name: 'Recherche', href: '#', icon: MagnifyingGlassIcon },
-  { name: 'Calendrier', href: '#', icon: CalendarIcon },
-  { name: 'Toutes nos musiques', href: '/tracks', icon: CalendarIcon },
-  { name: 'Tous nos artists', href: '/artists', icon: CalendarIcon },
+  { name: 'Accueil', href: '/', icon: HomeIcon },
+  { name: 'Toutes nos musiques', href: '/tracks', icon: MusicalNoteIcon },
+  { name: 'Tous nos artists', href: '/artist', icon: UserGroupIcon },
 ];
 
 export const playlistList: playlist[] = [
