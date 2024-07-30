@@ -20,7 +20,7 @@ const PanelContent = () => {
         <ul role={'list'} className={'flex flex-1 flex-col gap-y-7'}>
           <NavigationList navigation={navigation} />
           <li>
-            <PlaylistList title={'Your playlist'} list={playlistList} />
+            <PlaylistList title={'Your playlist'} />
           </li>
           <li className={'mt-auto'}>
             <a
