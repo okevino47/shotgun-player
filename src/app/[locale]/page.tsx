@@ -25,8 +25,11 @@ export default async function Home() {
   const fetchTopArtists = async () => {
     try {
       const data = await sql<Artist>`
-        SELECT id, name FROM artists LIMIT 4
-    `;
+          SELECT artists.name, artists.id, tracks.image_url
+          FROM artists
+                   JOIN track_artists ON artists.id = track_artists.artist_id
+                   JOIN tracks ON tracks.id = track_artists.track_id LIMIT 4
+      `;
 
       return data.rows.map((artist) => ({ ...artist }));
     } catch (error) {
