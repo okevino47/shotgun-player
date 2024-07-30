@@ -5,6 +5,7 @@ import { sql } from '@vercel/postgres';
 export type Artist = {
   id: number;
   name: string;
+  image_url?: string;
 };
 
 export const fetchArtists = async (): Promise<Artist[]> => {
