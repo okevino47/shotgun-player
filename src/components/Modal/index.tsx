@@ -12,7 +12,7 @@ const Modal = () => {
   const { open, setOpen, content } = useModal();
 
   return (
-    <Dialog open={open} onClose={setOpen} className={'relative z-10'}>
+    <Dialog open={open} onClose={setOpen} className={'relative z-50'}>
       <DialogBackdrop
         transition
         className={
