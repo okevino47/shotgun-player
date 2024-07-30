@@ -46,7 +46,7 @@ export default function Playlist({ params }: { params: { id: string } }) {
       <ul className={'grid-cols-3 space-y-2'}>
         {playlist.tracks.map((track) => (
           <li key={track.id} className={'group p-2'}>
-            <PlaylistTracksListItem track={track} />
+            <PlaylistTracksListItem track={track} playlist={playlist} />
           </li>
         ))}
       </ul>

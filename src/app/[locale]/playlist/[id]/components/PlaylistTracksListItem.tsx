@@ -15,14 +15,20 @@ import { HeartIcon } from '@heroicons/react/24/outline';
 import { formatDuration } from '~/utils/function/formatDuration';
 import EllipsisTrackButton from '~/components/buttons/EllipsisTrackButton';
 
-const PlaylistTracksListItem = ({ track }: { track: Track }) => {
+const PlaylistTracksListItem = ({
+  track,
+  playlist,
+}: {
+  track: Track;
+  playlist: Playlist;
+}) => {
   const { setCurrentTrack, setCurrentPlaylist } = usePlayingAudio();
   const [playlists, setPlaylists] = useState<null | Playlist[]>(null);
-
   const [isLikedTrack, setIsLikedTrack] = useState(false);
 
   const handleClick = () => {
     setCurrentTrack(track);
+    setCurrentPlaylist(playlist);
   };
 
   const toggleLikeSong = () => {
@@ -35,7 +41,7 @@ const PlaylistTracksListItem = ({ track }: { track: Track }) => {
   useEffect(() => {
     setIsLikedTrack(isTrackInPlaylist('Likes', track));
     const playlistsWithoutLikes = getPlaylists().filter(
-      (playlist) => playlist.title !== 'Likes'
+      (current) => current.title !== playlist.title
     );
 
     setPlaylists(playlistsWithoutLikes);
@@ -45,7 +51,7 @@ const PlaylistTracksListItem = ({ track }: { track: Track }) => {
     const handleStoragesChange = () => {
       setIsLikedTrack(isTrackInPlaylist('Likes', track));
       const playlistsWithoutLikes = getPlaylists().filter(
-        (playlist) => playlist.title !== 'Likes'
+        (current) => current.title !== playlist.title
       );
 
       setPlaylists(playlistsWithoutLikes);
