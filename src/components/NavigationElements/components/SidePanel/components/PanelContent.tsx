@@ -23,21 +23,9 @@ const PanelContent = ({ navigation }: PanelContentProps) => {
         <ul role={'list'} className={'flex flex-1 flex-col gap-y-7'}>
           <NavigationList navigation={navigation} />
           <li>
-            <PlaylistList title={'Your playlist'} />
-          </li>
-          <li className={'mt-auto'}>
-            <a
-              href={'#'}
-              className={
-                'group -mx-2 flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 text-gray-400 hover:bg-gray-800 hover:text-white'
-              }
-            >
-              <Cog6ToothIcon
-                aria-hidden={'true'}
-                className={'size-6 shrink-0'}
-              />
-              Settings
-            </a>
+            <PlaylistList
+              title={scopedNavigationElement('playlistSectionTitle')}
+            />
           </li>
         </ul>
       </nav>
