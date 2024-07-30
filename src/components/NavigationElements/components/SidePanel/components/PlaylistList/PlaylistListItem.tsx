@@ -22,14 +22,22 @@ const PlaylistListItem = ({ playlist }: SidePanelPlaylistLinkProps) => {
         'group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6'
       )}
     >
-      <span
-        className={
-          'flex size-6 shrink-0 items-center justify-center rounded-lg border border-gray-700 bg-gray-800 text-[0.625rem] font-medium text-gray-400 group-hover:text-white'
-        }
-      >
-        {playlist.name.slice(0, 1).toUpperCase()}
-      </span>
-      <span className={'truncate'}>{playlist.name}</span>
+      {title === 'Likes' ? (
+        <HeartIcon
+          className={
+            'flex size-6 shrink-0 items-center justify-center rounded-lg text-[0.625rem] font-medium text-gray-400 group-hover:text-white'
+          }
+        />
+      ) : (
+        <span
+          className={
+            'flex size-6 shrink-0 items-center justify-center rounded-lg border border-gray-700 bg-gray-800 text-[0.625rem] font-medium text-gray-400 group-hover:text-white'
+          }
+        >
+          {title.slice(0, 1).toUpperCase()}
+        </span>
+      )}
+      <span className={'truncate'}>{title}</span>
     </Link>
   );
 };
