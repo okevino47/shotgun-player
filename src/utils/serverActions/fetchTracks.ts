@@ -8,6 +8,7 @@ export type Track = {
   preview_url: string;
   duration_ms: number;
   image_url: string;
+  artist: string;
 };
 
 const fetchTest = async () => {

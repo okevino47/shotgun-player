@@ -10,8 +10,11 @@ export default async function Home() {
   const fetchTopTracks = async () => {
     try {
       const data = await sql<Track>`
-        SELECT * FROM tracks LIMIT 4
-    `;
+          SELECT tracks.name, tracks.duration_ms, tracks.preview_url, tracks.image_url, tracks.id, artists.name AS artist FROM tracks
+              JOIN track_artists ON tracks.id = track_artists.track_id
+              JOIN artists ON artists.id = track_artists.artist_id 
+              LIMIT 4
+      `;
 
       return data.rows.map((track) => ({ ...track }));
     } catch (error) {

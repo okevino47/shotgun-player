@@ -76,7 +76,7 @@ const PlaylistTracksListItem = ({
         />
         <div>
           <p>{track.name}</p>
-          <p>Artist name</p>
+          <p>{track.artist}</p>
         </div>
       </div>
       <p className={'italic'}>Album name</p>
@@ -89,7 +89,9 @@ const PlaylistTracksListItem = ({
           )}
         </button>
         <p>{formatDuration(track.duration_ms)}</p>
-        <EllipsisTrackButton playlistList={playlists} track={track} />
+        {playlists?.length ? (
+          <EllipsisTrackButton playlistList={playlists} track={track} />
+        ) : null}
       </div>
     </div>
   );
