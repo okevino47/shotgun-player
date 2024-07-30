@@ -11,7 +11,8 @@ interface SidePanelLinkProps {
 
 const NavigationListItem = ({ item }: SidePanelLinkProps) => {
   const pathname = usePathname();
-  const isCurrent = pathname.includes(item.name);
+  const isCurrent =
+    pathname.includes(item.name) || pathname.includes(item.href);
 
   return (
     <Link
