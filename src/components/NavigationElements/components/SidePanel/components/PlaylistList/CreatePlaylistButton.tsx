@@ -4,13 +4,15 @@ import React from 'react';
 import { PlusCircleIcon } from '@heroicons/react/24/outline';
 import { useModal } from '~/components/Modal/utils/ModalContext';
 import CreatePlaylistModalButtons from '~/components/NavigationElements/components/SidePanel/components/CreatePlaylistModalButtons';
+import { useI18n } from '~/core/locales/client';
 
 const CreatePlaylistButton = () => {
   const { setOpen, setContent } = useModal();
+  const t = useI18n();
 
   const handleOnClick = () => {
     setContent({
-      title: 'Nouvelle playlist',
+      title: t('navigationElements.addPlaylist'),
       component: <CreatePlaylistModalButtons />,
     });
     setOpen(true);
@@ -31,7 +33,7 @@ const CreatePlaylistButton = () => {
       >
         <PlusCircleIcon />
       </span>
-      <span>{'Create New playlist'}</span>
+      <span>{t('navigationElements.addPlaylist')}</span>
     </button>
   );
 };

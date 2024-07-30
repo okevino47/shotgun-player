@@ -13,12 +13,14 @@ import {
   removeTrackFromPlaylist,
 } from '~/utils/function/localStorage';
 import EllipsisTrackButton from '~/components/buttons/EllipsisTrackButton';
+import { useI18n } from '~/core/locales/client';
 
 interface TrackListItemProps {
   track: Track;
 }
 
 const TrackListItem = ({ track }: TrackListItemProps) => {
+  const t = useI18n();
   const { setCurrentTrack } = usePlayingAudio();
   const [isLikedTrack, setIsLikedTrack] = useState(false);
   const [playlistList, setPlaylistList] = useState<null | Playlist[]>(null);
@@ -48,7 +50,7 @@ const TrackListItem = ({ track }: TrackListItemProps) => {
       <button
         className={'flex flex-col items-center justify-center'}
         onClick={handleClick}
-        aria-label={'Play song'}
+        aria-label={t('tracks.ariaPlayButton')}
       >
         <div
           className={`flex size-28 items-center justify-center overflow-hidden rounded-xl bg-red-400`}
@@ -69,7 +71,10 @@ const TrackListItem = ({ track }: TrackListItemProps) => {
         </div>
       </button>
       <div className={'flex justify-between'}>
-        <button onClick={toggleLikeSong} aria-label={'Like or unlike song'}>
+        <button
+          onClick={toggleLikeSong}
+          aria-label={t('common.ariaLikeButton')}
+        >
           {isLikedTrack ? (
             <FilledHeartIcon className={'size-5 text-red-600'} />
           ) : (

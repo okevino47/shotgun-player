@@ -78,7 +78,7 @@ const AudioPlayer = () => {
   }
 
   return (
-    <div className={'pb-32'}>
+    <div className={'pb-52'}>
       <div
         className={
           'fixed bottom-0 z-50 w-full bg-gray-900 lg:left-[288px] lg:right-0 lg:w-auto'

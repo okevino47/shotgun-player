@@ -55,7 +55,7 @@ const SidePanel = ({
               />
             </div>
           </TransitionChild>
-          <PanelContent />
+          <PanelContent navigation={navigation} />
         </DialogPanel>
       </div>
     </Dialog>

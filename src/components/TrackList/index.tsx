@@ -8,7 +8,7 @@ interface TrackListProps {
 
 const TrackList = async ({ trackList }: TrackListProps) => {
   return (
-    <ul className={'flex flex-wrap justify-around gap-2'}>
+    <ul className={'flex flex-wrap justify-around gap-4'}>
       {trackList.map((track, index) => (
         <li key={index}>
           <TrackListItem track={track} />

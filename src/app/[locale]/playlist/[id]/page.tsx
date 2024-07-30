@@ -9,8 +9,10 @@ import {
   Playlist as PlaylistType,
 } from '~/utils/function/localStorage';
 import { useRouter } from 'next/navigation';
+import { useScopedI18n } from '~/core/locales/client';
 
 export default function Playlist({ params }: { params: { id: string } }) {
+  const scopedPlaylist = useScopedI18n('playlist');
   const [playlist, setPlaylist] = useState<PlaylistType | undefined>(undefined);
   const isLikesPlaylist = playlist?.title === 'Likes';
   const router = useRouter();
@@ -39,7 +41,7 @@ export default function Playlist({ params }: { params: { id: string } }) {
             onClick={onDeleteClick}
             className={'rounded-full bg-red-500 px-4 py-2 font-bold text-white'}
           >
-            Delete Playlist
+            {scopedPlaylist('deletePlaylist')}
           </button>
         )}
       </div>

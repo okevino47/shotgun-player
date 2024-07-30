@@ -14,6 +14,7 @@ import { HeartIcon } from '@heroicons/react/24/outline';
 
 import { formatDuration } from '~/utils/function/formatDuration';
 import EllipsisTrackButton from '~/components/buttons/EllipsisTrackButton';
+import { useI18n } from '~/core/locales/client';
 
 const PlaylistTracksListItem = ({
   track,
@@ -22,6 +23,7 @@ const PlaylistTracksListItem = ({
   track: Track;
   playlist: Playlist;
 }) => {
+  const t = useI18n();
   const { setCurrentTrack, setCurrentPlaylist } = usePlayingAudio();
   const [playlists, setPlaylists] = useState<null | Playlist[]>(null);
   const [isLikedTrack, setIsLikedTrack] = useState(false);
@@ -71,7 +73,7 @@ const PlaylistTracksListItem = ({
         </button>
         <img
           className={'size-8 object-contain'}
-          alt={'album image'}
+          alt={t('playlist.albumAltImage')}
           src={track.image_url}
         />
         <div>
@@ -81,7 +83,10 @@ const PlaylistTracksListItem = ({
       </div>
       <p className={'italic'}>Album name</p>
       <div className={'flex gap-x-4'}>
-        <button onClick={toggleLikeSong} aria-label={'Like or unlike song'}>
+        <button
+          onClick={toggleLikeSong}
+          aria-label={t('common.ariaLikeButton')}
+        >
           {isLikedTrack ? (
             <FilledHeartIcon className={'size-5 text-red-600'} />
           ) : (

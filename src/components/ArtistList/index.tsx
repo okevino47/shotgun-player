@@ -8,7 +8,7 @@ interface ArtistListProps {
 
 const ArtistList = async ({ artistList }: ArtistListProps) => {
   return (
-    <ul className={'flex flex-wrap justify-around gap-2'}>
+    <ul className={'flex flex-wrap justify-around gap-4'}>
       {artistList.map((artist, index) => (
         <li key={index}>
           <ArtistListItem artist={artist} index={index} />

@@ -2,8 +2,11 @@ import React from 'react';
 import { Track } from '~/utils/serverActions/fetchTracks';
 import { sql } from '@vercel/postgres';
 import TrackList from '~/components/TrackList';
+import { getScopedI18n } from '~/core/locales/server';
 
 export default async function Tracks() {
+  const scopedCommon = await getScopedI18n('tracks');
+
   const fetchAllTracks = async () => {
     try {
       const data = await sql<Track>`
@@ -28,7 +31,7 @@ export default async function Tracks() {
 
   return (
     <main className={'pl-4 pt-4'}>
-      <p className={'mb-8 text-xl font-bold'}>Toutes nos musiques !</p>
+      <p className={'mb-8 text-xl font-bold'}>{scopedCommon('allMusic')}</p>
       <div>
         <TrackList trackList={trackList} />
       </div>

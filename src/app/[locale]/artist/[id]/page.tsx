@@ -16,7 +16,6 @@ export default async function Artist({ params }: { params: { id?: string } }) {
       throw new Error('Error while fetching artist details');
     }
   };
-
   const artist = await fetchArtistDetails();
 
   return (
