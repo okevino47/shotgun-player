@@ -1,7 +1,7 @@
 import {
   HomeIcon,
-  MagnifyingGlassIcon,
-  CalendarIcon,
+  MusicalNoteIcon,
+  UserGroupIcon,
 } from '@heroicons/react/24/outline';
 
 export type navigationItem = {
