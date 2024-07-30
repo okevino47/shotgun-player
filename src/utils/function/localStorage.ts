@@ -7,8 +7,35 @@ export type Playlist = {
 };
 
 export const getPlaylists = (): Playlist[] => {
+  const isLocalStorageAvailable =
+    typeof window !== 'undefined' && window.localStorage;
+  if (!isLocalStorageAvailable) {
+    return [];
+  }
   const playlists = localStorage.getItem('playlists');
   return playlists ? JSON.parse(playlists) : [];
+};
+
+export const getPlaylist = (search: string): Playlist | undefined => {
+  const playlists = getPlaylists();
+  return playlists.find(
+    (playlist) => playlist.title === search || playlist.id === search
+  );
+};
+
+export const isTrackInPlaylist = (
+  playlistTitle: string,
+  track: Track
+): boolean => {
+  const isLocalStorageAvailable =
+    typeof window !== 'undefined' && window.localStorage;
+  if (!isLocalStorageAvailable) {
+    return false;
+  }
+  const playlist = getPlaylist(playlistTitle);
+  return playlist
+    ? playlist.tracks.some((current) => current.id === track.id)
+    : false;
 };
 
 export const savePlaylists = (playlists: Playlist[]): void => {
@@ -22,15 +49,13 @@ export const createPlaylist = (playlistTitle: string, id: string): void => {
   savePlaylists(playlists);
 };
 
-export const addTrackToPlaylist = (
-  playlistTitle: string,
-  track: Track
-): void => {
+export const addTrackToPlaylist = (search: string, track: Track): void => {
   const playlists = getPlaylists();
-  const playlist = playlists.find(
-    (playlist) => playlist.title === playlistTitle
-  );
-  if (playlist) {
+  const playlist = playlists.find((playlist) => {
+    return playlist.title === search || playlist.id === search;
+  });
+  const isDuplicate = isTrackInPlaylist(search, track);
+  if (playlist && !isDuplicate) {
     playlist.tracks.push(track);
     savePlaylists(playlists);
   }
@@ -55,7 +80,8 @@ export const removeTrackFromPlaylist = (
 export const deletePlaylist = (playlistTitle: string): void => {
   const playlists = getPlaylists();
   const updatedPlaylists = playlists.filter(
-    (playlist) => playlist.title !== playlistTitle
+    (playlist) =>
+      playlist.title !== playlistTitle && playlist.id !== playlistTitle
   );
   savePlaylists(updatedPlaylists);
 };
