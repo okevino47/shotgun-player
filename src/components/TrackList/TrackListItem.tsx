@@ -7,9 +7,12 @@ import { HeartIcon } from '@heroicons/react/24/outline';
 import { HeartIcon as FilledHeartIcon } from '@heroicons/react/20/solid';
 import {
   addTrackToPlaylist,
+  getPlaylists,
   isTrackInPlaylist,
+  Playlist,
   removeTrackFromPlaylist,
 } from '~/utils/function/localStorage';
+import EllipsisTrackButton from '~/components/buttons/EllipsisTrackButton';
 
 interface TrackListItemProps {
   track: Track;
@@ -18,6 +21,7 @@ interface TrackListItemProps {
 const TrackListItem = ({ track }: TrackListItemProps) => {
   const { setCurrentTrack } = usePlayingAudio();
   const [isLikedTrack, setIsLikedTrack] = useState(false);
+  const [playlistList, setPlaylistList] = useState<null | Playlist[]>(null);
 
   const handleClick = () => {
     setCurrentTrack(track);
@@ -32,15 +36,20 @@ const TrackListItem = ({ track }: TrackListItemProps) => {
 
   useEffect(() => {
     setIsLikedTrack(isTrackInPlaylist('Likes', track));
+    setPlaylistList(getPlaylists());
   }, []);
 
   return (
     <div
       className={
-        'flex w-40 flex-col justify-center rounded-2xl bg-gray-200 p-3'
+        'flex w-40 flex-col justify-center rounded-2xl bg-gray-50 p-3 shadow'
       }
     >
-      <button onClick={handleClick} aria-label={'Play song'}>
+      <button
+        className={'flex flex-col items-center justify-center'}
+        onClick={handleClick}
+        aria-label={'Play song'}
+      >
         <div
           className={`flex size-28 items-center justify-center overflow-hidden rounded-xl bg-red-400`}
         >
@@ -48,9 +57,7 @@ const TrackListItem = ({ track }: TrackListItemProps) => {
             className={'object-contain'}
             width={'100%'}
             height={'100%'}
-            src={
-              'https://i.scdn.co/image/ab67616d0000b2732beee88e97ca512ec5542fb8'
-            }
+            src={track.image_url}
             alt={track.name}
           />
         </div>
@@ -58,17 +65,19 @@ const TrackListItem = ({ track }: TrackListItemProps) => {
           <p className={'truncate text-base font-bold not-italic'}>
             {track.name}
           </p>
-          <p>{'X albums'}</p>
-          <p>{'X Titres'}</p>
+          <p>{track.artist}</p>
         </div>
       </button>
-      <button onClick={toggleLikeSong} aria-label={'Like or unlike song'}>
-        {isLikedTrack ? (
-          <FilledHeartIcon className={'size-5 text-red-600'} />
-        ) : (
-          <HeartIcon className={'size-5'} />
-        )}
-      </button>
+      <div className={'flex justify-between'}>
+        <button onClick={toggleLikeSong} aria-label={'Like or unlike song'}>
+          {isLikedTrack ? (
+            <FilledHeartIcon className={'size-5 text-red-600'} />
+          ) : (
+            <HeartIcon className={'size-5'} />
+          )}
+        </button>
+        <EllipsisTrackButton playlistList={playlistList} track={track} />
+      </div>
     </div>
   );
 };
