@@ -4,6 +4,7 @@ import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { Track } from '~/utils/serverActions/fetchTracks';
 import { HeartIcon } from '@heroicons/react/24/outline';
+import playlistList from '~/components/NavigationElements/components/SidePanel/components/PlaylistList/index';
 
 interface SidePanelPlaylistLinkProps {
   title: string;
@@ -11,7 +12,11 @@ interface SidePanelPlaylistLinkProps {
   id: string;
 }
 
-const PlaylistListItem = ({ title, id }: SidePanelPlaylistLinkProps) => {
+const PlaylistListItem = ({
+  title,
+  id,
+  tracks,
+}: SidePanelPlaylistLinkProps) => {
   const pathname = usePathname();
   const isCurrent = pathname.includes(title) || pathname.includes(id);
 
@@ -41,7 +46,10 @@ const PlaylistListItem = ({ title, id }: SidePanelPlaylistLinkProps) => {
           {title.slice(0, 1).toUpperCase()}
         </span>
       )}
-      <span className={'truncate'}>{title}</span>
+      <div className={'flex w-full justify-between'}>
+        <span className={'truncate'}>{title}</span>
+        <span className={'truncate'}>{tracks.length}</span>
+      </div>
     </Link>
   );
 };
