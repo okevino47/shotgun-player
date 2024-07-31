@@ -34,6 +34,7 @@ const TrackListItem = ({ track }: TrackListItemProps) => {
       ? removeTrackFromPlaylist('Likes', track)
       : addTrackToPlaylist('Likes', track);
     setIsLikedTrack((prev) => !prev);
+    window.dispatchEvent(new Event('storage'));
   };
 
   useEffect(() => {

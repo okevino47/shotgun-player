@@ -1,3 +1,5 @@
+'use client';
+
 import { Track } from '~/utils/serverActions/fetchTracks';
 import { usePlayingAudio } from '~/components/AudioPlayer/utils/PlayingAudioContext';
 import React, { useEffect, useState } from 'react';
@@ -38,6 +40,7 @@ const PlaylistTracksListItem = ({
       ? removeTrackFromPlaylist('Likes', track)
       : addTrackToPlaylist('Likes', track);
     setIsLikedTrack((prev) => !prev);
+    window.dispatchEvent(new Event('storage'));
   };
 
   useEffect(() => {
