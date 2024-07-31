@@ -33,7 +33,7 @@ export default function Playlist({ params }: { params: { id: string } }) {
   }
 
   return (
-    <section className={'px-4 pt-4'}>
+    <main className={'px-4 pt-4'}>
       <div className={'flex justify-between'}>
         <h1 className={'text-2xl'}>{playlist.title}</h1>
         {isLikesPlaylist ? null : (
@@ -52,6 +52,6 @@ export default function Playlist({ params }: { params: { id: string } }) {
           </li>
         ))}
       </ul>
-    </section>
+    </main>
   );
 }

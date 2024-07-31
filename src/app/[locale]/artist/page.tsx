@@ -24,8 +24,8 @@ export default async function Artist() {
   const artistList = await fetchAllArtist();
 
   return (
-    <section>
+    <main>
       <ArtistList artistList={artistList} />
-    </section>
+    </main>
   );
 }
