@@ -144,7 +144,6 @@ const AudioPlayer = () => {
             width={'0'}
             height={'0'}
             playing={playing}
-            volume={0.05}
             onProgress={handleProgress}
             config={{
               file: {
