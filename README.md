@@ -49,3 +49,7 @@ To launch test :
 - Not perfect responsive
 - Too few tests
 - No error handling (with `Sentry`)
+
+## More
+- using GitMoji for better visibility on commits
+- using `yarn` for package management
