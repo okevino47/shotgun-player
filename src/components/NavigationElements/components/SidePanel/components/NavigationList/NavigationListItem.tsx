@@ -16,6 +16,7 @@ const NavigationListItem = ({ item }: SidePanelLinkProps) => {
 
   return (
     <Link
+      data-cy={'navigationListItem'}
       href={item.href}
       className={conditionalClassnames(
         isCurrent

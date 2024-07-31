@@ -44,7 +44,7 @@ export default async function Home() {
 
   return (
     <main className={'px-4 pt-4'}>
-      <div className={'my-8 flex justify-between'}>
+      <div data-cy={'artistSection'} className={'my-8 flex justify-between'}>
         <p className={'text-2xl font-bold'}>{t('common.topArtists')}</p>
         <Link
           className={'min-w-20 rounded-full border-2 border-gray-400'}
@@ -54,7 +54,7 @@ export default async function Home() {
         </Link>
       </div>
       <ArtistList artistList={artistList} />
-      <div className={'my-8 flex justify-between'}>
+      <div data-cy={'trackSection'} className={'my-8 flex justify-between'}>
         <p className={'text-2xl font-bold'}>{t('common.topTracks')}</p>
         <Link
           href={`/tracks`}

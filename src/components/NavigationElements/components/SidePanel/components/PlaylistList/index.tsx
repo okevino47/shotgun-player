@@ -42,7 +42,11 @@ const PlaylistList = ({ title }: PlaylistListProps) => {
       <div className={'text-xl font-semibold leading-6 text-gray-400'}>
         {title}
       </div>
-      <ul role={'list'} className={'-mx-2 mt-2 space-y-1'}>
+      <ul
+        data-cy={'playlistList'}
+        role={'list'}
+        className={'-mx-2 mt-2 space-y-1'}
+      >
         <li>
           <CreatePlaylistButton />
         </li>

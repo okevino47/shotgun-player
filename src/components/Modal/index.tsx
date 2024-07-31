@@ -12,7 +12,12 @@ const Modal = () => {
   const { open, setOpen, content } = useModal();
 
   return (
-    <Dialog open={open} onClose={setOpen} className={'relative z-50'}>
+    <Dialog
+      open={open}
+      data-cy={'playlistModal'}
+      onClose={setOpen}
+      className={'relative z-50'}
+    >
       <DialogBackdrop
         transition
         className={

@@ -4,7 +4,7 @@ import { navigationItem } from '~/components/NavigationElements/components/SideP
 
 const NavigationList = ({ navigation }: { navigation: navigationItem[] }) => {
   return (
-    <ul role={'list'} className={'-mx-2 space-y-1'}>
+    <ul data-cy={'navigationList'} role={'list'} className={'-mx-2 space-y-1'}>
       {navigation.map((item: navigationItem) => (
         <li key={item.name}>
           <NavigationListItem item={item} />

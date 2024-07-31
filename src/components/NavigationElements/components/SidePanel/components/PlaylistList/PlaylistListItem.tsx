@@ -17,6 +17,7 @@ const PlaylistListItem = ({ title, id }: SidePanelPlaylistLinkProps) => {
 
   return (
     <Link
+      data-cy={'playlistListItem'}
       href={`/playlist/${id}`}
       className={conditionalClassnames(
         isCurrent

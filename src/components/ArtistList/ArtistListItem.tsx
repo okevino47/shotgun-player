@@ -9,7 +9,7 @@ interface ArtistListItemProps {
 
 const ArtistListItem = ({ artist, index }: ArtistListItemProps) => {
   return (
-    <Link href={`/artist/${artist.id}`}>
+    <Link data-cy={'artistListItem'} href={`/artist/${artist.id}`}>
       <div
         className={
           'flex w-72 space-x-2 rounded-2xl bg-gray-50 px-4 py-2 shadow'

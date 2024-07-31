@@ -66,7 +66,10 @@ const PlaylistTracksListItem = ({
   }, [track]);
 
   return (
-    <div className={'flex items-center justify-between'}>
+    <div
+      className={'flex items-center justify-between'}
+      data-cy={'PlaylistTrackListItem'}
+    >
       <div className={'flex h-14 items-center space-x-4'}>
         <button onClick={handleClick} className={'p-1'}>
           <PlayIcon className={'size-5'} />
@@ -77,7 +80,7 @@ const PlaylistTracksListItem = ({
           src={track.image_url}
         />
         <div>
-          <p>{track.name}</p>
+          <p data-cy={'PlaylistTrackListItemName'}>{track.name}</p>
           <p>{track.artist}</p>
         </div>
       </div>

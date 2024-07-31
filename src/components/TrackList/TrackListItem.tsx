@@ -43,6 +43,7 @@ const TrackListItem = ({ track }: TrackListItemProps) => {
 
   return (
     <div
+      data-cy={'trackListItem'}
       className={
         'flex w-40 flex-col justify-center rounded-2xl bg-gray-50 p-3 shadow'
       }
@@ -64,7 +65,10 @@ const TrackListItem = ({ track }: TrackListItemProps) => {
           />
         </div>
         <div className={'max-w-40 text-sm italic'}>
-          <p className={'truncate text-base font-bold not-italic'}>
+          <p
+            className={'truncate text-base font-bold not-italic'}
+            data-cy={'trackName'}
+          >
             {track.name}
           </p>
           <p>{track.artist}</p>
@@ -72,13 +76,17 @@ const TrackListItem = ({ track }: TrackListItemProps) => {
       </button>
       <div className={'flex justify-between'}>
         <button
+          data-cy={'likeButton'}
           onClick={toggleLikeSong}
           aria-label={t('common.ariaLikeButton')}
         >
           {isLikedTrack ? (
-            <FilledHeartIcon className={'size-5 text-red-600'} />
+            <FilledHeartIcon
+              data-cy={'iconFilledHeartIcon'}
+              className={'size-5 text-red-600'}
+            />
           ) : (
-            <HeartIcon className={'size-5'} />
+            <HeartIcon data-cy={'iconHeartIcon'} className={'size-5'} />
           )}
         </button>
         <EllipsisTrackButton playlistList={playlistList} track={track} />

@@ -3,8 +3,8 @@
 import React from 'react';
 import { PlusCircleIcon } from '@heroicons/react/24/outline';
 import { useModal } from '~/components/Modal/utils/ModalContext';
-import CreatePlaylistModalButtons from '~/components/NavigationElements/components/SidePanel/components/CreatePlaylistModalButtons';
 import { useI18n } from '~/core/locales/client';
+import CreatePlaylistModalButtons from '~/components/NavigationElements/components/SidePanel/components/CreatePlaylistModalButtons';
 
 const CreatePlaylistButton = () => {
   const { setOpen, setContent } = useModal();
@@ -22,6 +22,7 @@ const CreatePlaylistButton = () => {
     <button
       onClick={handleOnClick}
       type={'button'}
+      data-cy={'createPlaylistButton'}
       className={
         'group flex w-full gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 text-white hover:bg-gray-800'
       }
