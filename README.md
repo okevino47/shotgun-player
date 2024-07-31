@@ -5,7 +5,9 @@ To launch project:
 - go in a terminal in the project folder
 - launch command: `yarn dev`
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [Local website](http://localhost:3000) with your browser to see the result.
+
+Open [Prod Website](https://shotgun-player-dcq72o40q-kevins-projects-dc035968.vercel.app/fr/tracks) with your browser to see the result.
 
 ## Features
 - Playlist:
@@ -48,6 +50,7 @@ To launch test :
 - Not removing track from playlist if user is on playlist page (can also be a normal behavior depending if we want to let the user undo the action)
 - Not perfect responsive
 - Too few tests
+- Missing playlist list (dispatch event) update when adding new playlist and clicking on ellipsis button
 - No error handling (with `Sentry`)
 
 ## More
